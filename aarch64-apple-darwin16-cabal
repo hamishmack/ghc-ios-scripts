@@ -1,0 +1,9 @@
+#!/bin/sh
+export COMMON=--builddir=dist/aarch64
+export COMPILE="--with-ghc=aarch64-apple-darwin16-ghc
+                --with-ghc-pkg=aarch64-apple-darwin16-ghc-pkg
+                --with-gcc=aarch64-apple-darwin16-clang
+                --with-ld=aarch64-apple-darwin16-ld
+                --hsc2hs-options=--cross-compile"
+export CONFIG="--configure-option=--host=aarch64-apple-darwin16 --disable-shared"
+exec "`dirname $0`/common-cross-cabal" "$@"
