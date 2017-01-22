@@ -76,6 +76,7 @@ Xcode will now run these commands each time it builds your project.
 
 * You'll need a very recent version of Cabal: ```cabal install cabal-install```
 * You'll also need to check that the option **jobs: $ncpus** does not appear in your *~/.cabal/config* file, as it triggers a mode that does not support cross-compilation.
+* Make sure the `prefix` values in both `install-dirs user` and `install-dirs global` include `$arch` and `$os` so the different binaries do not get mixed up (e.g. `/Users/hamish/Library/Haskell/$arch-$os-$compiler/lib/$pkgid`)
 * To install a package for the device and simulator, use cabal-ios (included in ghc-ios-scripts) like:
 ```
 cabal-ios install random
@@ -106,3 +107,8 @@ cabal-ios install distributed-process --flags=-th
 You can check the .cabal file to find the appropriate option.
 
 * For packages that use executables, there's not yet a flag to give to Cabal to keep it from trying and failing to build them (for example, Crypto and pretty-show). Until that flag is implemented, you'll have to use ```cabal get``` and manually comment out the executables section in the .cabal file, then ```cabal install```'ing the edited copy. You can use this strategy to get rid of Template Haskell in packages that don't provide a flag to do so, such as aeson. But consider submitting a patch to the developers : )
+
+wai-websockets
+
+../distributive-0.5.0.2 ../transformers-compat-0.5.1.4/ ../comonad-5/ text hashable -finteger-simple -f-integer-gmp -f-example --constraint='lens>=4.15' ../lens-4.15.1 ../semigroupoids-5.1 ../zlib-0.6.1.1 ../entropy-0.3.7
+
